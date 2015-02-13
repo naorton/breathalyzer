@@ -5,10 +5,22 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 void setup() {
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
-  // Print a message to the LCD.
+  
   
 }
 
+/*
+adc_counts is a 10 bit value recorded from the ADC. 
+1024 is the maximum 10 bit value.
+5v is the maximum ADC value. 
+
+This function generates a percentage 
+
+       adc_counts
+  5v * ---------- = Vout
+          1024
+
+*/
 float adc_to_volts(int adc_counts) {
   float volts = 0;
   volts = ( (float) adc_counts / 1024.0 ) * 5.0 ;
